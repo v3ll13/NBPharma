@@ -42,28 +42,28 @@ public class MedicamentAdapter extends ArrayAdapter<MedicamentAdapter> {
     }
 
 
-    @NonNull
-    @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        ViewHolder viewHolder;
-        final MedicamentAdapter medicamentAdapter= getItem(position);
-        if (convertView == null){
-            viewHolder = new ViewHolder();
-            LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_item, null, true);
-
-            viewHolder.nomMedicament = (TextView) convertView.findViewById(R.id.nomMedicament);
-            viewHolder.dateExpi = (TextView) convertView.findViewById(R.id.dateExpi);
-            viewHolder.imageMedicament = (ImageView) convertView.findViewById(R.id.imgMedoc);
-
-            //Cache the viewHolder object inside the fresh view
-            convertView.setTag(viewHolder);
-        }else {
-            // View is being recycled, retrieve the viewHolder object from tag
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-
-        //viewHolder.nomMedicament.setText(medicamentAdapter.get());
-
-    }
+//    @NonNull
+//    @Override
+//    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+//        ViewHolder viewHolder;
+//        final MedicamentAdapter medicamentAdapter= getItem(position);
+//        if (convertView == null){
+//            viewHolder = new ViewHolder();
+//            LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+//            convertView = layoutInflater.inflate(R.layout.list_item, null, true);
+//
+//            viewHolder.nomMedicament = (TextView) convertView.findViewById(R.id.nomMedicament);
+//            viewHolder.dateExpi = (TextView) convertView.findViewById(R.id.dateExpi);
+//            viewHolder.imageMedicament = (ImageView) convertView.findViewById(R.id.imgMedoc);
+//
+//            //Cache the viewHolder object inside the fresh view
+//            convertView.setTag(viewHolder);
+//        }else {
+//            // View is being recycled, retrieve the viewHolder object from tag
+//            viewHolder = (ViewHolder) convertView.getTag();
+//        }
+//
+//        //viewHolder.nomMedicament.setText(medicamentAdapter.get());
+//
+//    }
 }
