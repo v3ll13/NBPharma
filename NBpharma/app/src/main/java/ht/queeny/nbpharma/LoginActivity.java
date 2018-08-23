@@ -81,6 +81,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        Intent myIntent = new Intent(LoginActivity.this, MenueDrawer.class);
+        startActivity(myIntent);
+        finish();
 
 
     }

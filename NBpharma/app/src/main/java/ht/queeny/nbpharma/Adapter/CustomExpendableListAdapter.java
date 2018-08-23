@@ -37,8 +37,8 @@ public class CustomExpendableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public int getChildrenCount(int i) {
-        return listItem.size();
+    public int getChildrenCount(int groupPosition) {
+        return listItem.get(listTitle.get(groupPosition)).size();
     }
 
     @Override

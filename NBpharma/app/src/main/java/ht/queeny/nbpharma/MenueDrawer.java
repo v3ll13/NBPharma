@@ -178,13 +178,12 @@ public class MenueDrawer extends AppCompatActivity {
 
     private void genData() {
         List<String> title = Arrays.asList("Medicament", "Pharmacie", "Conseil", "A propos");
-        List<String> childitem = Arrays.asList("Liste Medicament","Liste Pharmacie","Location Pharmacie", "Prix Medicament");
 
         listChild  = new TreeMap<>();
-        listChild.put(title.get(0), childitem);
-        listChild.put(title.get(1), childitem);
-        listChild.put(title.get(2), childitem);
-        listChild.put(title.get(3), childitem);
+        listChild.put(title.get(0), Arrays.asList("Liste Medicament"));
+        listChild.put(title.get(1), Arrays.asList("Liste Pharmacie"));
+        listChild.put(title.get(2), Arrays.asList("Location Pharmacie"));
+        listChild.put(title.get(3), Arrays.asList("Prix Medicament"));
 
         listTitle = new ArrayList<>(listChild.keySet());
     }
