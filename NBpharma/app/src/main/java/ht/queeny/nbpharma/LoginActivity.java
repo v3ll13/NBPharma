@@ -114,6 +114,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void handleFault( BackendlessFault fault )
             {
                 // login failed, to get the error code call fault.getCode()
+                Toast.makeText(LoginActivity.this, ""+fault.getMessage()+" "+fault.getDetail(), Toast.LENGTH_SHORT).show();
             }
         });
     }

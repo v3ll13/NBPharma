@@ -40,4 +40,7 @@ dependencies {
     //Backendless settings
     implementation 'com.backendless:backendless:5.0.2'
 
+    //picasso library
+    implementation 'com.squareup.picasso:picasso:2.5.0'
+
 }

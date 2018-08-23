@@ -90,8 +90,7 @@ public class CustomExpendableListAdapter extends BaseExpandableListAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.list_item,null);
         }
 
-        TextView txtChild = (TextView)convertView.findViewById(R.id.expendableListItem);
-
+        TextView txtChild = (TextView)convertView.findViewById(R.id.nomMedicament);
         txtChild.setTypeface(null, Typeface.BOLD);
         txtChild.setText(title);
 
