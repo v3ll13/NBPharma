@@ -87,10 +87,10 @@ public class CustomExpendableListAdapter extends BaseExpandableListAdapter {
         String title =(String)getChild(groupPosition, childPosition);
 
         if (convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.list_item,null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_item_fragment_test,null);
         }
 
-        TextView txtChild = (TextView)convertView.findViewById(R.id.nomMedicament);
+        TextView txtChild = (TextView)convertView.findViewById(R.id.test_expendable);
         txtChild.setTypeface(null, Typeface.BOLD);
         txtChild.setText(title);
 

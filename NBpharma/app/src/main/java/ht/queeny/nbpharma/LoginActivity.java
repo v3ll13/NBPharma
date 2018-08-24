@@ -1,11 +1,14 @@
 package ht.queeny.nbpharma;
 
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.content.IntentSender;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,11 +23,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.text.BreakIterator;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -81,9 +88,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        Intent myIntent = new Intent(LoginActivity.this, MenueDrawer.class);
-        startActivity(myIntent);
-        finish();
 
 
     }
@@ -135,21 +139,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     // [START handleSignInResult]
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
-            Log.w(TAG, "signInResult: response found");
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
-            Log.w(TAG, "signInResult: successx");
             updateUI(account);
             Intent myIntent = new Intent(LoginActivity.this, MenueDrawer.class);
             startActivity(myIntent);
-            Log.w(TAG, "signInResult: activity Menu Drawer started");
             finish();
 
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-            Log.w(TAG, "signInResult:failed message= " + e.getMessage());
             updateUI(null);
         }
     }

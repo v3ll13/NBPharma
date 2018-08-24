@@ -26,6 +26,7 @@ import java.util.TreeMap;
 
 import ht.queeny.nbpharma.Adapter.CustomExpendableListAdapter;
 import ht.queeny.nbpharma.Fragments.FragmentContent;
+import ht.queeny.nbpharma.Fragments.MedicamentContent;
 import ht.queeny.nbpharma.Helper.FragmentNavigationManage;
 import ht.queeny.nbpharma.Interface.NavigationManage;
 
@@ -157,11 +158,20 @@ public class MenueDrawer extends AppCompatActivity {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("fragmentContent", 1);
 
+                    MedicamentContent medicamentContent = new MedicamentContent();
+                    medicamentContent.setArguments(bundle);
+                    //
+                    onFragmentTransaction(medicamentContent);
+
+                }else if (selectedItem  == "Liste Pharmacie"){
+                    //navigationManage.showFragment(selectedItem);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("fragmentContent", 1);
+
                     FragmentContent fragmentContent = new FragmentContent();
                     fragmentContent.setArguments(bundle);
-                    //
-                    onFragmentTransaction(fragmentContent);
 
+                    onFragmentTransaction(fragmentContent);
                 }
                 else{
                     //throw new IllegalArgumentException("Not a supported Fragment");
@@ -178,7 +188,9 @@ public class MenueDrawer extends AppCompatActivity {
 
     private void genData() {
         List<String> title = Arrays.asList("Medicament", "Pharmacie", "Conseil", "A propos");
+        List<String> childitem = Arrays.asList("Liste Medicament","Liste Pharmacie","Location Pharmacie", "Prix Medicament");
 
+        listChild  = new TreeMap<>();
         listChild  = new TreeMap<>();
         listChild.put(title.get(0), Arrays.asList("Liste Medicament"));
         listChild.put(title.get(1), Arrays.asList("Liste Pharmacie"));
