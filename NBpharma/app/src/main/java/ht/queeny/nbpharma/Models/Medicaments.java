@@ -87,7 +87,7 @@ public class Medicaments implements Serializable {
     private String photo;
     private String posologie;
     private Date updated;
-    private Date    created;
+    private Date created;
 
 
     public static ArrayList<Medicaments> fromListMap(List<Map> map){

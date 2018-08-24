@@ -14,15 +14,15 @@ import java.util.Map;
 public class Pharmacie implements Serializable {
 
     private String adresse;
-    private  String email;
+    private String email;
     private String horaire;
     private String Images;
     private String Intineraire;
-    private  Double map_lati;
-    private  Double map_long;
+    private Double map_lati;
+    private Double map_long;
     private String nom;
-    private  String Pharmacien_responsable;
-    private  int status;
+    private String Pharmacien_responsable;
+    private int status;
     private String  telephone;
     private Date created;
 

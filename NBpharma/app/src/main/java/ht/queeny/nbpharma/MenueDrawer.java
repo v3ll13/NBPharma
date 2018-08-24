@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
@@ -27,6 +28,7 @@ import java.util.TreeMap;
 import ht.queeny.nbpharma.Adapter.CustomExpendableListAdapter;
 import ht.queeny.nbpharma.Fragments.FragmentContent;
 import ht.queeny.nbpharma.Fragments.MedicamentContent;
+import ht.queeny.nbpharma.Fragments.PharmacieContent;
 import ht.queeny.nbpharma.Helper.FragmentNavigationManage;
 import ht.queeny.nbpharma.Interface.NavigationManage;
 
@@ -43,12 +45,18 @@ public class MenueDrawer extends AppCompatActivity {
     private Map<String ,List<String>> listChild;
     private NavigationManage navigationManage;
 
+    /*private SearchView searchView = null;
+    private SearchView.OnQueryTextListener queryTextListener;*/
+
+
     private FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_menue_drawer);
+
 
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
@@ -156,7 +164,7 @@ public class MenueDrawer extends AppCompatActivity {
                 if(selectedItem  == "Liste Medicament"){
                     //navigationManage.showFragment(selectedItem);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("fragmentContent", 1);
+                    bundle.putSerializable("medicamentContent", 1);
 
                     MedicamentContent medicamentContent = new MedicamentContent();
                     medicamentContent.setArguments(bundle);
@@ -164,14 +172,13 @@ public class MenueDrawer extends AppCompatActivity {
                     onFragmentTransaction(medicamentContent);
 
                 }else if (selectedItem  == "Liste Pharmacie"){
-                    //navigationManage.showFragment(selectedItem);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("fragmentContent", 1);
+                    bundle.putSerializable("pharmacieContent", 2);
 
-                    FragmentContent fragmentContent = new FragmentContent();
-                    fragmentContent.setArguments(bundle);
+                    PharmacieContent pharmacieContent = new PharmacieContent();
+                    pharmacieContent.setArguments(bundle);
 
-                    onFragmentTransaction(fragmentContent);
+                    onFragmentTransaction(pharmacieContent);
                 }
                 else{
                     //throw new IllegalArgumentException("Not a supported Fragment");
@@ -210,11 +217,11 @@ public class MenueDrawer extends AppCompatActivity {
         items = new String[]{"Medicament","Pharmacie", "Conseil", "A Propos"};
     }
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mainmenue, menu);
         return true;
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

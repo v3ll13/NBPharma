@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/leaf"
+    tools:context="ht.queeny.nbpharma.SingupActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="16dp"
+        android:text="Register"
+        android:textAllCaps="true"
+        android:textColor="@color/colorGray"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#6ef4f4f4"
+        android:drawableLeft="@drawable/ic_person_white_24dp"
+        android:drawablePadding="78dp"
+        android:ems="1"
+        android:hint="UserName"
+        android:inputType="textPersonName"
+        android:padding="11dp"
+        android:textColorHint="#fff" />
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#6ef4f4f4"
+        android:drawableLeft="@drawable/ic_email_white_24dp"
+        android:drawablePadding="78dp"
+        android:ems="1"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="11dp"
+        android:textColorHint="#fff" />
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#6ef4f4f4"
+        android:drawableLeft="@drawable/ic_phone_white_24dp"
+        android:drawablePadding="78dp"
+        android:ems="1"
+        android:hint="Telephone"
+        android:inputType="textEmailAddress"
+        android:padding="11dp"
+        android:textColorHint="#fff" />
+    <EditText
+        android:id="@+id/etPsswrd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#6ef4f4f4"
+        android:drawableLeft="@drawable/ic_lock_white_24dp"
+        android:drawablePadding="78dp"
+        android:ems="1"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="11dp"
+        android:textColorHint="#fff" />
+
+    <EditText
+        android:id="@+id/etPsswrdCfrm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#6ef4f4f4"
+        android:drawableLeft="@drawable/ic_lock_white_24dp"
+        android:drawablePadding="78dp"
+        android:ems="1"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:padding="11dp"
+        android:textColorHint="#fff" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Register"
+        android:textAllCaps="true"
+        android:textColor="#fff"
+        android:background="@drawable/background_login_two"
+        android:paddingLeft="48dp"
+        android:paddingRight="48dp"
+        android:layout_marginTop="20dp" />
+
+
+</LinearLayout>
