@@ -30,6 +30,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // Dependency for Google Sign-In
+    //noinspection GradleCompatible
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
 
     // Dependencies for the REST API example
@@ -43,5 +44,10 @@ dependencies {
 
     //picasso library
     implementation 'com.squareup.picasso:picasso:2.5.0'
+
+    //google map
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    compile 'com.google.android.gms:play-services-location:15.0.1'
+    compile 'com.google.android.gms:play-services-places:15.0.1'
 
 }
