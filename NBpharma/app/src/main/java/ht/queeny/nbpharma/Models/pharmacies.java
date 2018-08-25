@@ -1,17 +1,8 @@
 package ht.queeny.nbpharma.Models;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-/**
- * Created by root on 8/23/18.
- */
-
-public class Pharmacie implements Serializable {
+public class pharmacies {
 
     private String adresse;
     private String email;
@@ -121,4 +112,5 @@ public class Pharmacie implements Serializable {
     public void setCreated(Date created) {
         this.created = created;
     }
+
 }

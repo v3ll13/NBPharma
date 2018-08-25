@@ -3,12 +3,26 @@ package ht.queeny.nbpharma.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+import com.backendless.persistence.DataQueryBuilder;
+
+import java.util.List;
+
+import ht.queeny.nbpharma.Adapter.PharmacieAdapter;
+import ht.queeny.nbpharma.Models.Pharmacie;
+import ht.queeny.nbpharma.Models.pharmacies;
 import ht.queeny.nbpharma.R;
+import ht.queeny.nbpharma.Settings.BackendlessSettings;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +43,7 @@ public class PharmacieContent extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private PharmacieAdapter pharmacieAdapter;
 
     public PharmacieContent() {
         // Required empty public constructor
@@ -59,6 +74,9 @@ public class PharmacieContent extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        Backendless.initApp(getContext(), BackendlessSettings.APPLICATION_ID, BackendlessSettings.API_KEY);
+
     }
 
     @Override
@@ -66,6 +84,30 @@ public class PharmacieContent extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_pharmacie_content, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        DataQueryBuilder queryBuilder = DataQueryBuilder.create();
+        queryBuilder.setGroupBy("nom");
+
+        final ListView listView = view.findViewById(R.id.lvpharmacie);
+
+        Backendless.Persistence.of(pharmacies.class).find(queryBuilder, new AsyncCallback<List<pharmacies>>() {
+            @Override
+            public void handleResponse(List<pharmacies> response) {
+                pharmacieAdapter = new PharmacieAdapter(getContext(), response);
+                listView.setAdapter(pharmacieAdapter);
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Log.v("Backendless", fault.toString());
+            }
+        });
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

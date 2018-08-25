@@ -29,8 +29,6 @@ public class MedicamentContent extends Fragment {
     private SearchView.OnQueryTextListener queryTextListener;
 
 
-
-
     private OnFragmentInteractionListener mListener;
 
     public MedicamentContent() {

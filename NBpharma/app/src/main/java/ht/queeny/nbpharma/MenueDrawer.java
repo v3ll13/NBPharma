@@ -18,6 +18,8 @@ import android.widget.ExpandableListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.backendless.Backendless;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +33,7 @@ import ht.queeny.nbpharma.Fragments.MedicamentContent;
 import ht.queeny.nbpharma.Fragments.PharmacieContent;
 import ht.queeny.nbpharma.Helper.FragmentNavigationManage;
 import ht.queeny.nbpharma.Interface.NavigationManage;
+import ht.queeny.nbpharma.Settings.BackendlessSettings;
 
 public class MenueDrawer extends AppCompatActivity {
 
@@ -86,6 +89,7 @@ public class MenueDrawer extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle("NBPharma");
+
 
         
     }
