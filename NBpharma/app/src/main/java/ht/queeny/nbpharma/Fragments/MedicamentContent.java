@@ -14,8 +14,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.SearchView;
+import android.widget.ListView;
 
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+import com.backendless.persistence.DataQueryBuilder;
+
+import java.util.List;
+
+import ht.queeny.nbpharma.Adapter.MedicamentAdapter;
+import ht.queeny.nbpharma.Adapter.PharmacieAdapter;
+import ht.queeny.nbpharma.Models.Medicaments;
+import ht.queeny.nbpharma.Models.pharmacies;
 import ht.queeny.nbpharma.R;
+import ht.queeny.nbpharma.Settings.BackendlessSettings;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +43,8 @@ public class MedicamentContent extends Fragment {
 
 
     private OnFragmentInteractionListener mListener;
+
+    private MedicamentAdapter medicamentAdapter;
 
     public MedicamentContent() {
         // Required empty public constructor
@@ -46,10 +61,40 @@ public class MedicamentContent extends Fragment {
 
     }
 
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        DataQueryBuilder queryBuilder = DataQueryBuilder.create();
+        queryBuilder.setGroupBy("nom");
+
+        final ListView listView = view.findViewById(R.id.lvmedicament);
+
+        Backendless.Persistence.of(Medicaments.class).find(queryBuilder, new AsyncCallback<List<Medicaments>>() {
+            @Override
+            public void handleResponse(List<Medicaments> response) {
+                medicamentAdapter = new MedicamentAdapter(getContext(), response);
+                listView.setAdapter(medicamentAdapter);
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Log.v("Backendless", fault.toString());
+            }
+        });
+
+    }
+
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
+        Backendless.initApp(getContext(), BackendlessSettings.APPLICATION_ID, BackendlessSettings.API_KEY);
+
     }
 
     @Override

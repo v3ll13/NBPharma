@@ -1,19 +1,22 @@
 package ht.queeny.nbpharma.Models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import ht.queeny.nbpharma.Fragments.MedicamentContent;
 
 /**
  * Created by root on 8/22/18.
  */
 
-public class Medicaments implements Serializable {
+public class Medicaments  {
+
+    private categorie categorie_id; //in database
+    private String forme; //in database
+    private String nom;
+    private String pharmacie_id;
+    private String photo;
+    private String posologie;
+    private Date updated;
+    private Date created;
 
 
     public String getForme() {
@@ -25,7 +28,7 @@ public class Medicaments implements Serializable {
     }
 
     public String getPharmacieId() {
-        return pharmacieId;
+        return pharmacie_id;
     }
 
     public String getPhoto() {
@@ -53,7 +56,7 @@ public class Medicaments implements Serializable {
     }
 
     public void setPharmacieId(String pharmacieId) {
-        this.pharmacieId = pharmacieId;
+        this.pharmacie_id = pharmacieId;
     }
 
     public void setPhoto(String photo) {
@@ -72,55 +75,24 @@ public class Medicaments implements Serializable {
         this.created = created;
     }
 
-    public Categorie getCategorieID() {
-        return CategorieID;
+    public categorie getCategorieID() {
+        return categorie_id;
     }
 
-    public void setCategorieID(Categorie categorieID) {
-        CategorieID = categorieID;
+    public void setCategorieID(categorie categorieID) {
+        this.categorie_id = categorieID;
     }
 
-    private Categorie CategorieID; //in database
-    private String forme; //in database
-    private String nom;
-    private String pharmacieId;
-    private String photo;
-    private String posologie;
-    private Date updated;
-    private Date created;
-
-
-    public static ArrayList<Medicaments> fromListMap(List<Map> map){
-        ArrayList<Medicaments> medicaments = new ArrayList();
-        for(int i =0; i<map.size(); i++){
-           // Medicaments medoc = Medicaments.fromMap(map.get(i));
-            Medicaments medoc = Medicaments.fromMap(map.get(i));
-
-            medicaments.add(medoc);
-        }
-        return medicaments;
+    public String getObjectId() {
+        return objectId;
     }
 
-    public static Medicaments fromMap(Map map) {
-        Medicaments medicament = new Medicaments();
-
-        medicament.setCategorieID((Categorie) map.get("categorieId"));
-        if(map.get("categoID") != null){
-            medicament.setCategorieID(Categorie.fromMap((HashMap) map.get("categoID")));
-        }
-
-        medicament.setCreated((Date) map.get("created"));
-        medicament.setForme((String) map.get("forme"));
-        medicament.setNom((String) map.get("nom"));
-        medicament.setPhoto((String) map.get("photo"));
-        medicament.setPharmacieId((String) map.get("pharacie"));
-        medicament.setPosologie((String) map.get("posologie"));
-        medicament.setUpdated((Date) map.get("updated"));
-
-
-
-
-        return medicament;
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
     }
+
+    private String objectId;
+
+
 
 }

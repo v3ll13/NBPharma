@@ -16,72 +16,37 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import ht.queeny.nbpharma.Models.Medicaments;
 import ht.queeny.nbpharma.R;
 
 
-public class MedicamentAdapter extends ArrayAdapter<MedicamentAdapter> {
+public class MedicamentAdapter extends ArrayAdapter<Medicaments> {
 
-            private String nomMedicament; //in database
-            private String dateExpiration; //in database
-            private String imageMedicament;
+    private Context context;
+    private List<Medicaments> medicamentsList;
 
-            ArrayList<MedicamentAdapter> medicamentAdapters;
-            Context context;
-            int resource;
+    public MedicamentAdapter(Context context, List<Medicaments> list)
+    {
+        super(context, R.layout.medicament_row_layout, list);
 
-            public String getNomMedicament() {
-                return nomMedicament;
-            }
+        this.context = context;
+        this.medicamentsList = list;
+    }
 
-            public String getImageMedicament() {
-                return imageMedicament;
-            }
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-            private static class ViewHolder {
-                TextView nomMedicament;
-                TextView dateExpiration;
-                ImageView imageMedicament;
-                private List<MedicamentAdapter> list;
-                ArrayList<MedicamentAdapter> listMedicament;
-            }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            public MedicamentAdapter(Context context, ArrayList<MedicamentAdapter> medoc) {
-                super(context, R.layout.list_item, medoc);
-            }
+        convertView = inflater.inflate(R.layout.medicament_row_layout, parent, false);
 
-            @NonNull
-            @Override
-            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                MedicamentAdapter.ViewHolder viewHolder;
-                final MedicamentAdapter medicamentAdapter = getItem(position);
-                if (convertView == null) {
-                    viewHolder = new MedicamentAdapter.ViewHolder();
-                    LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-                    convertView = layoutInflater.inflate(R.layout.list_item, null, true);
+        TextView address = convertView.findViewById(R.id.nom);
+        address.setText(medicamentsList.get(position).getNom());
 
-                    viewHolder.nomMedicament = (TextView) convertView.findViewById(R.id.nomMedicament);
-                    viewHolder.dateExpiration = (TextView) convertView.findViewById(R.id.dateExpi);
-                    viewHolder.imageMedicament = (ImageView) convertView.findViewById(R.id.imgMedoc);
+        return convertView;
 
-                    //Cache the viewHolder object inside the fresh view
-                    convertView.setTag(viewHolder);
-                } else {
-                    // View is being recycled, retrieve the viewHolder object from tag
-                    viewHolder = (MedicamentAdapter.ViewHolder) convertView.getTag();
-                }
-
-                viewHolder.nomMedicament.setText(medicamentAdapter.getNomMedicament());
-                viewHolder.dateExpiration.setText(medicamentAdapter.getImageMedicament());
-                viewHolder.imageMedicament.setVisibility(View.GONE);
-
-                Picasso.with(getContext())
-                        .load(medicamentAdapter.getImageMedicament())
-                        .resize(220, 130).into(viewHolder.imageMedicament);
-
-                return convertView;
-
-            }
-
+    }
 }
 
 

@@ -100,6 +100,7 @@ public class PharmacieContent extends Fragment {
             public void handleResponse(List<pharmacies> response) {
                 pharmacieAdapter = new PharmacieAdapter(getContext(), response);
                 listView.setAdapter(pharmacieAdapter);
+
             }
 
             @Override
