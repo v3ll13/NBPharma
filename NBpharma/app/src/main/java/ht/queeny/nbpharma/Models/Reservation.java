@@ -81,34 +81,9 @@ public class Reservation  implements Serializable{
     }
 
 
-    public static ArrayList<Reservation> fromListMap(List<Map> map){
-        ArrayList<Reservation> reservations = new ArrayList();
-        for(int i =0; i<map.size(); i++){
-            Reservation reserv = Reservation.fromMap(map.get(i));
-
-            reservations.add(reserv);
-        }
-        return reservations;
-    }
-
-
-    public static Reservation fromMap(Map map) {
-        Reservation reservation = new Reservation();
-
-        reservation.setData_relation((Medicaments) map.get("DataRelation"));
-        if(map.get("DataRelation") != null){
-            reservation.setData_relation(Medicaments.fromMap((HashMap) map.get("DataRelation")));
-        }
-
-        reservation.setCreated((String) map.get("created"));
-        reservation.setUpdated((String) map.get("updated"));
-        reservation.setNom_User((String) map.get("NomUser"));
-        reservation.setQtite((Double) map.get("quantite"));
-        reservation.setTelephone((String) map.get("telephone"));
 
 
 
-        return reservation;
-    }
+
 }
 
